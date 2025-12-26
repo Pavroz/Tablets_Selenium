@@ -5,6 +5,7 @@ from pages.auth_page import AuthPage
 from pages.configuration_page import ConfigurationPage
 from pages.lists_page import ListsPage
 from pages.profiles_page import ProfilesPage
+from data import test_data
 
 
 @pytest.fixture(scope='function')
@@ -46,7 +47,7 @@ def configuration_page(driver):
 def auth(auth_page):
     """Фикстура для авторизации"""
     auth_page.open()
-    auth_page.auth_correct_login_and_password('0', '321')
+    auth_page.auth_correct_login_and_password(test_data.login, test_data.password)
     yield auth_page.driver  # возвращаем драйвер (или страницу)
 
 # @pytest.fixture()

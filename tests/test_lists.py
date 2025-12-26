@@ -35,7 +35,7 @@ class TestLists:
             image=image
         )
 
-        lists_page.got_to_back()
+        lists_page.go_to_back()
         profiles_page.delete_profile(name)
 
     @allure.story('Позитивные сценарии')
@@ -47,7 +47,7 @@ class TestLists:
         configuration_page.go_to_lists_page()
         name_participant = lists_page.create_participant()
         lists_page.update_participant(name_participant)
-        lists_page.got_to_back()
+        lists_page.go_to_back()
         profiles_page.delete_profile(name)
         ## Вариант с try - finally, чтобы профиль всегда удалялся
         # name = None
@@ -57,10 +57,10 @@ class TestLists:
         #     configuration_page.go_to_lists_page()
         #     name_participant = lists_page.create_participant()
         #     lists_page.update_participant(name_participant)
-        #     # lists_page.got_to_back()
+        #     # lists_page.go_to_back()
         # finally:
         #         try:
-        #             lists_page.got_to_back()
+        #             lists_page.go_to_back()
         #             profiles_page.delete_profile(name)
         #         except Exception as e:
         #             print(f"Не удалось удалить профиль '{name}': {e}")
@@ -74,14 +74,14 @@ class TestLists:
         configuration_page.go_to_lists_page()
         name_participant = lists_page.create_participant()
         lists_page.delete_participant(name_participant)
-        lists_page.got_to_back()
+        lists_page.go_to_back()
         profiles_page.delete_profile(name)
 
-    def test_viewing_image(self, auth, profiles_page, lists_page, configuration_page):
+    def test_view_added_image(self, auth, profiles_page, lists_page, configuration_page):
         name = profiles_page.create_profile()
         profiles_page.go_to_profile(name)
         configuration_page.go_to_lists_page()
         name_participant = lists_page.create_participant()
-        lists_page.viewing_image(name_participant)
-        profiles_page.got_to_back()
+        lists_page.view_added_image(name_participant)
+        lists_page.go_to_back()
         profiles_page.delete_profile(name)

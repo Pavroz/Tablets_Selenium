@@ -20,10 +20,10 @@ class ListsPage(BasePage):
                          for _ in range(length))
         return f'{prefix}{suffix}'
 
-    def go_to_back(self):
-        """Стрелка назад (выход в меню профилей)"""
-        with allure.step('Переход к списку профилей'):
-            self.got_to_back()
+    # def go_to_back(self):
+    #     """Стрелка назад (выход в меню профилей)"""
+    #     with allure.step('Переход к списку профилей'):
+    #         self.got_to_back()
 
     def create_participant(self, middlename=None, subject=None, position=None, image=None):
         """Создание участника с генерацией значений"""

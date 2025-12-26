@@ -1,6 +1,6 @@
 import pytest
 import allure
-from data import data_test
+from data import test_data
 
 @allure.feature('Авторизация')
 class TestAuth:
@@ -10,21 +10,21 @@ class TestAuth:
     @pytest.mark.auth
     def test_correct_login(self, auth_page):
         auth_page.open()
-        auth_page.auth_correct_login_and_password(data_test.login, data_test.password)
+        auth_page.auth_correct_login_and_password(test_data.login, test_data.password)
 
     @allure.story('Позитивные сценарии')
     @allure.title('Проверка авторизации с активным восстановлением конфигурации')
     @pytest.mark.auth
     def test_active_recovery_conf(self, auth_page):
         auth_page.open()
-        auth_page.auth_active_recovery_conf(data_test.login, data_test.password)
+        auth_page.auth_active_recovery_conf(test_data.login, test_data.password)
 
     @allure.story('Позитивные сценарии')
     @allure.title('Проверка авторизации с неактивным восстановлением конфигурации')
     @pytest.mark.auth
     def test_inactive_recovery_conf(self, auth_page):
         auth_page.open()
-        auth_page.auth_inactive_recovery_conf(data_test.login, data_test.password)
+        auth_page.auth_inactive_recovery_conf(test_data.login, test_data.password)
 
     @allure.story('Негативные сценарии')
     @allure.title('Проверка авторизации с пустыми полями ввода')
@@ -38,12 +38,12 @@ class TestAuth:
     @pytest.mark.auth
     def test_incorrect_login(self, auth_page):
         auth_page.open()
-        auth_page.auth_incorrect_login('qwe', data_test.password)
+        auth_page.auth_incorrect_login('qwe', test_data.password)
 
     @allure.story('Негативные сценарии')
     @allure.title('Проверка авторизации с некорректным паролем')
     @pytest.mark.auth
     def test_incorrect_password(self, auth_page):
         auth_page.open()
-        auth_page.auth_incorrect_password(data_test.login, 'qwe')
+        auth_page.auth_incorrect_password(test_data.login, 'qwe')
 
